@@ -5,3 +5,5 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Book.create(title: "The Sound and the Fury", sentence_string: "Ahhh stream of consciousness. Something meaningful. Resolution and conflict. The South.")

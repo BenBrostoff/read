@@ -13,10 +13,13 @@
 
 ActiveRecord::Schema.define(version: 20140707205735) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "books", force: true do |t|
     t.string   "title"
     t.text     "sentence_string"
-    t.text     "sentences"
+    t.text     "sentences",       array: true
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -29,6 +32,6 @@ ActiveRecord::Schema.define(version: 20140707205735) do
     t.datetime "updated_at"
   end
 
-  add_index "comments", ["book_id"], name: "index_comments_on_book_id"
+  add_index "comments", ["book_id"], name: "index_comments_on_book_id", using: :btree
 
 end
