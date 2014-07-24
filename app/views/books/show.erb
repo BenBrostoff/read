@@ -1,4 +1,12 @@
-<% @book.sentences.each do |sentence| %>
+<h1> <%=@book.title %> </h1>
+
+<div class="currentSentence">
+  HI FRIENDS
+</div>
+
+<% @book.sentences.each_with_index do |sentence, index| %>
+  <div class="sentence<%=index%>">
   <%= sentence %>
+  </div>
   <br>
 <% end %>
