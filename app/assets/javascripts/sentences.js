@@ -1,23 +1,3 @@
-var Sentence = function(pages){
-   this.index = 0;
-   this.pages = pages;
-}
-
-Sentence.prototype.increment = function() {
-   this.index += 1
-   if (this.index > this.pages) {
-    this.index = this.pages;
-   }
-}
-
-Sentence.prototype.decrement = function() {
-  this.index -= 1
-  if (this.index <= 0) {
-    this.index = 0;
-  }
-}
-
-
 $(document).ready(function() {
 
   var sentence = new Sentence(+$('.total_pages').text());
@@ -58,3 +38,26 @@ $(document).ready(function() {
       $('.currentSentence').text(currentSentence);
     });
 });
+
+var Sentence = function(pages){
+   this.pages = pages;
+   if (localStorage['index'] === undefined) {
+   this.index = 0;
+  } else {this.index = localStorage['index']}
+}
+
+Sentence.prototype.increment = function() {
+   this.index += 1
+   if (this.index > this.pages) {
+    this.index = this.pages;
+   }
+   localStorage['index'] = this.index;
+}
+
+Sentence.prototype.decrement = function() {
+  this.index -= 1
+  if (this.index <= 0) {
+    this.index = 0;
+  }
+  localStorage['index'] = this.index;
+}
