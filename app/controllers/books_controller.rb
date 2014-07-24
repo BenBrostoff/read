@@ -17,16 +17,16 @@ class BooksController < ApplicationController
     book = EPUB::Parser.parse(filename)
 
     # m = TactfulTokenizer::Model.new
-    sentences = ""
+    sentence_string = ""
 
     book.each_page_on_spine do |page|
       page = page.content_document.nokogiri
       page.search('p').each{|el| el.before ' '}
-      sentences << page.text
+      sentence_string << page.text
     end
 
-    book = Book.create(title: params[:title], sentences: sentences)
-    
+    book = Book.create(title: params[:title], sentence_string: sentence_string)
+
     redirect_to books_path(book.id)
   end
 end

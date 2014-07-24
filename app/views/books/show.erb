@@ -1,1 +1,3 @@
-<%= @book.sentences %>
+<% @book.sentence_string.each do |sentence| %>
+  <%= sentence %>
+<% end %>
