@@ -5,16 +5,22 @@ var Sentence = function(pages){
 
 Sentence.prototype.increment = function() {
    this.index += 1
+   if (this.index > this.pages) {
+    this.index = this.pages;
+   }
 }
 
 Sentence.prototype.decrement = function() {
   this.index -= 1
+  if (this.index <= 0) {
+    this.index = 0;
+  }
 }
 
 
 $(document).ready(function() {
 
-  var sentence = new Sentence(3);
+  var sentence = new Sentence(+$('.total_pages').text());
   var pages = this.pages;
 
   currentSentence = $('.sentence' + sentence.index).text()
